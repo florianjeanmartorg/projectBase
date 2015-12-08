@@ -1,0 +1,63 @@
+{
+  "name": "project",
+  "version": "0.0.0",
+  "authors": [
+    "florianjeanmart"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/components"
+  ],
+  "dependencies": {
+    "angucomplete": "*",
+    "angular": "1.4.4",
+    "angular-animate": "1.4.4",
+    "angular-bootstrap": "~0.13.3",
+    "angular-bootstrap-datetimepicker": "*",
+    "angular-dynamic-locale": "0.1.27",
+    "angular-i18n": "1.4.4",
+    "angular-route": "1.4.4",
+    "angular-ui-sortable": "0.13.3",
+    "bootstrap": "=3.3.0",
+    "jquery": "1.11.2",
+    "underscore": "*",
+    "moment": "*",
+    "mathjs": "1.2.0",
+    "ng-file-upload": "2.0.5",
+    "messenger": "1.4.1",
+    "ng-table": "0.3.3",
+    "jquery-ui": "~1.11.2",
+    "angular-timer": "*",
+    "humanize-duration": "*",
+    "angular-socialshare":"*",
+    "angular-easyfb":"*"
+  },
+  "overrides": {
+    "bootstrap-sass": {
+      "main": [
+        "vendor/assets/javascripts/bootstrap/affix.js",
+        "vendor/assets/javascripts/bootstrap/alert.js",
+        "vendor/assets/javascripts/bootstrap/button.js",
+        "vendor/assets/javascripts/bootstrap/carousel.js",
+        "vendor/assets/javascripts/bootstrap/collapse.js",
+        "vendor/assets/javascripts/bootstrap/dropdown.js",
+        "vendor/assets/javascripts/bootstrap/tab.js",
+        "vendor/assets/javascripts/bootstrap/transition.js",
+        "vendor/assets/javascripts/bootstrap/scrollspy.js",
+        "vendor/assets/javascripts/bootstrap/modal.js",
+        "vendor/assets/javascripts/bootstrap/tooltip.js",
+        "vendor/assets/javascripts/bootstrap/popover.js"
+      ]
+    }
+  },
+  "resolutions": {
+    "angular-bootstrap": "~0.12.0"
+  },
+  "devDependencies": {
+    "angular-mocks": "1.4.4"
+  }
+}

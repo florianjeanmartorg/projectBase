@@ -1,0 +1,44 @@
+{
+  "name": "Lynk",
+  "version": "0.0.0",
+  "description": "This is your new Play application =====================================",
+  "main": "Gruntfile.js",
+  "dependencies": {
+    "grunt-cli": "0.1.13",
+    "grunt": "^0.4.5",
+    "grunt-contrib-concat": "^0.5.0",
+    "grunt-contrib-cssmin": "^0.11.0",
+    "grunt-contrib-uglify": "^0.7.0",
+    "grunt-filerev": "^2.1.2",
+    "grunt-usemin": "^3.0.0",
+    "wiredep": "^2.2.2"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-concat": "^0.5.0",
+    "grunt-contrib-cssmin": "^0.11.0",
+    "grunt-contrib-uglify": "^0.7.0",
+    "grunt-filerev": "^2.1.2",
+    "grunt-ng-annotate": "^0.8.0",
+    "grunt-angular-templatecache": "~0.2.5",
+    "grunt-html2js": "~0.3.4",
+    "grunt-spritesmith": "~5.0.0",
+    "grunt-contrib-jasmine": "~0.9.1",
+    "grunt-timestamp": "0.0.8",
+    "grunt-banner": "~0.5.0",
+    "grunt-rename": "~0.1.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/florianjeanmart/roommateService2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/florianjeanmart/roommateService2/issues"
+  },
+  "homepage": "https://github.com/florianjeanmart/roommateService2"
+}

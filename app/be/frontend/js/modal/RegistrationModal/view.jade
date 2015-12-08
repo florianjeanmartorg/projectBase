@@ -1,0 +1,44 @@
+//- header
+.modal-header
+    button.button-gling-dark.glyphicon.glyphicon-remove(style='float:right', ng-click='close()')
+    h4.modal-title {{'--.customer.registrationModal.title' | translateText}}
+
+//- body
+.modal-body.modal-login.customer-registration
+
+    //- description
+    .modal-description
+        | {{'--.customer.registrationModal.personal.desc' | translateText}} <br/>
+
+        //- go to business regsitration
+        span.modal-login-link.link(ng-click='toBusinessRegistration()')
+            | {{'--.registrationModal.toBusinessRegistration' | translateText}}
+
+    // facebook registration
+    .facebook-login-btn-container
+        a.facebookShare.ng-isolate-scope(ng-click="fb_login()")
+            .facebookButton
+                .pluginButton
+                    .pluginButtonContainer
+                        .pluginButtonImage
+                            button(type="button")
+                                i.pluginButtonIcon.img.sp_plugin-button-2x.sx_plugin-button-2x_favblue
+                        span.pluginButtonLabel {{'--.registrationModal.facebook.btn' |translateText}}
+
+    //- 'or"
+    table.horizontal-split
+        tr
+            td
+                div
+            td {{'--.generic.or' | translateText}}
+            td
+                div
+
+    //- account form
+    account-form-ctrl(ng-info='accountParam')
+
+//- footer
+.modal-footer
+    button#customer-registration-modal-btn-save.btn.gling-button-dark(ng-disabled='loading', type='button', ng-click='save()')
+        | {{'--.generic.save' | translateText}}
+    img(src='/assets/images/modal-loading.gif', ng-show='loading')

@@ -1,0 +1,19 @@
+.row.form-group.has-feedback(ng-class="{'error' : displayError()===true}", ng-click='logField()', ng-hide='isActive() === false')
+    div
+        label.control-label.col-md-3(ng-show='getInfo().fieldTitle')
+            | {{getInfo().fieldTitle |
+            | translateText}}
+        .col-md-6
+            .dropdown
+            a.dropdown-toggle(id='{{id}}', role='button', data-toggle='dropdown', data-target='#', href='')
+                .input-group
+                    input.form-control(ng-disabled='getInfo().disabled()', name='{{getInfo().name}}', type='text', ng-model='resultFormated')
+                    span.input-group-addon
+                        i.glyphicon.glyphicon-calendar
+                ul.dropdown-menu.date_input(role='menu', aria-labelledby='dLabel')
+                    datetimepicker(data-ng-model='result', data-datetimepicker-config="{ dropdownSelector: '{{idHtag}}',minView:'{{getInfo().minimalDelay}}' }")
+        div(ng-transclude='')
+        .col-md-3.errors(ng-show='displayError()===true')
+            | {{getInfo().validationMessage | translateText}}
+    .col-md-3.hidden-sm.hidden-xs
+    .col-md-6.help(ng-show='getInfo().details!=null') {{getInfo().details | translateText}}

@@ -1,0 +1,79 @@
+.form {
+    .form_loading {
+        height: 75px;
+        vertical-align: middle;
+        text-align: center;
+    }
+}
+
+.form-group {
+    padding-top: 4px;
+    margin-bottom: 0px;
+    padding-right: 8px;
+    padding-bottom: 0px;
+
+    label {
+        line-height: 25px;
+        text-align: right;
+    }
+
+    @media (min-width: 992px) {
+        padding-top: 7px;
+    }
+}
+
+//.control-label {
+//    margin-top: 5px;
+//}
+
+.help {
+    color: @color-grey-dark;
+    margin-left: 15px;
+}
+
+.hidden {
+    display: none;
+}
+
+.error {
+    background-color: @color-white;
+
+    input:focus {
+        border: 2px solid @color-red;
+    }
+
+
+    @media (max-width: 991px) {
+        .errors {
+            color: #ffffff;
+            padding-top: 1px;
+            padding-bottom: 1px;
+            margin-left: 16px;
+            margin-right: 16px;
+            margin-top: 3px;
+            background-color: @color-red;
+            border-radius: 4px;
+        }
+    }
+
+    @media (min-width: 992px) {
+        .errors {
+            min-height: 20px;
+            background: @color-red;
+            padding: 5px;
+            -webkit-box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.5);
+            -moz-box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.5);
+            box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.5);
+            color: #ffffff;
+            margin-left: -30px;
+            top: 10px;
+            position: relative;
+            z-index: 10;
+        }
+    }
+}
+
+.form-control-check {
+    width: 34px;
+    height: 34px;
+}

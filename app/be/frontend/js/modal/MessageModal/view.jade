@@ -1,0 +1,9 @@
+.modal-header
+    button.gling-button-dark.glyphicon.glyphicon-remove(style='float:right', ng-click='close()')
+    h4.modal-title {{title | translateText}}
+.modal-body
+    | {{message | translateText}}
+.modal-footer(ng-show='displaySaveButton()')
+    button#modal-message-btn-valid.btn.gling-button-dark(ng-disabled='loading', type='button', ng-click='save()')
+        | {{'--.generic.valid' | translateText}}
+    img(src='/assets/images/modal-loading.gif', ng-show='loading')

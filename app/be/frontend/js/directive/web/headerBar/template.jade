@@ -1,0 +1,41 @@
+div
+    .navigation-bar(ng-class="{'header-with-advanced-search':advancedSearch}")
+        .container.header-option-container
+            h1#welcome-btn-welcome
+                Rodolphe
+
+            // not connected menu
+            .profile-buttons-container(ng-show='accountService.getMyself()==null')
+                // lang
+                select.gling-button-light(ng-model='languageService.currentLanguage', ng-options='lang.code as lang.language for lang in languageService.languages')
+                button#welcome-btn-login.gling-button(type='button', ng-click='login()')
+                    | {{'--.welcome.login' | translateText}}
+                span
+                    | {{'--.generic.or' | translateText}}
+                button#welcome-btn-registration.gling-button(type='button', ng-click='registration()')
+                    | {{'--.welcome.signIn' | translateText}}
+
+            // connected menu
+            .profile-buttons-container(ng-show='accountService.getMyself()!=null', style='display : inline-block')
+                .dropdown(ng-show='accountService.getMyself()!=null', style='display : inline-block')
+                    // connection button
+                    .menu-connection-button-container
+                        .menu-connection-name
+                            | {{accountService.getMyself().firstname}}
+                        #dropdownMenu1.gling-icon.gling-icon-profil.menu-connection-icon(data-toggle='dropdown', aria-expanded='true')
+                            span
+                        // connected menu
+                        ul.dropdown-menu.dropdown-menu-right(role='menu', aria-labelledby='dropdownMenu1')
+                            li(role='presentation')
+                                a#welcome-btn-profile(role='menuitem', tabindex='-1', href='', ng-click="navigateTo('/profile')")
+                                    | {{'--.welcome.myProfile' | translateText}}
+                            li(role='presentation')
+                                a#welcome-btn-logout(role='menuitem', tabindex='-1', href='', ng-click='logout()')
+                                    | {{'--.generic.logout' | translateText}}
+                            li
+                                ul
+        // navigation bar
+        .navigation-bar-menu
+            div
+                button.gling-button-dark(ng-click="goTo('/welcome')", ng-class="{'selected':testPath('/welcome')}")
+                    | {{'--.welcome.welcome' | translateText}}

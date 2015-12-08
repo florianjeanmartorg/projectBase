@@ -1,0 +1,14 @@
+.input-text.field_text.row(ng-class="{'error' : displayError()===true,'has-calculator': getInfo().hasCalculator===true}", ng-hide='isActive() === false')
+    .form-group
+        label.control-label.col-md-3(ng-show='getInfo().fieldTitle')
+            | {{getInfo().fieldTitle | translateText}}
+        .col-md-6
+            div {{'--.field.dateSimple.to' | translateText}}
+                select(ng-options="day as day | date:'EEE dd MMM' for day in days", ng-model='day', style='min-width: 100px;margin-right: 20px;margin-left: 5px;', ng-disabled='getInfo().disabled()')
+                | {{'--.field.dateSimple.at' | translateText}}
+                select(ng-options='hour.value as hour.key for hour in hours', ng-model='hour', style='min-width: 100px;margin-right: 20px;margin-left: 5px;', ng-disabled='getInfo().disabled()')
+        .col-md-3.errors(ng-show='displayError()===true')
+            | {{getInfo().validationMessage | translateText}}
+    .col-md-3.hidden-sm.hidden-md
+    .col-md-6.help(ng-show='getInfo().details!=null')
+        | {{getInfo().details | translateText}}

@@ -1,0 +1,9 @@
+.form
+    dir-field-text(ng-info='fields.firstname')
+    dir-field-text(ng-info='fields.lastname')
+    dir-field-select(ng-info='fields.gender')
+    dir-field-select(ng-info='fields.language')
+    dir-field-text(ng-info='fields.email')
+    dir-field-text(ng-info='fields.password')
+    dir-field-text(ng-info='fields.repeatPassword')
+    div(ng-show='getInfo().updateMode!=true', ng-bind-html="'--.registration.accept.condition' | translateText | text")

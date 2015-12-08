@@ -1,0 +1,39 @@
+@(languages: be.lynk.server.dto.ListDTO[be.lynk.server.dto.LangDTO], data: be.lynk.server.dto.InterfaceDataDTO)
+@import com.fasterxml.jackson.databind.ObjectMapper
+@import play.Play
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Gling - What's Up in my Shops</title>
+        <meta charset="utf-8"/>
+        <link rel="shortcut icon" href="/assets/images/icon.ico">
+
+        <meta http-equiv="content-language" content="fr">
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <meta name="description" content="Suivez l’actualité de  vos commerces favoris ! Restaurants, boutiques, théâtres, magasins de décoration,… Gling rassemble tous les types d’établissements pour répondre à l’ensemble de vos envies.">
+        <meta name="keywords" content="Magasin Commerce Commerçant Consommateur Client Local Proximité Promotion Réduction Actualité Nouveauté Evénement Coordonnées Contact Heures ouverture Téléphone E-mail Adresse Communication Application Géolocalisation Gling Shop Deal">
+        <meta name="robots" content="index,follow">
+        <meta name="revisit-after" content="15days">
+        <meta name="identifier-url" content="http://www.gling.be">
+        <meta name="author" content="Gling">
+        <meta name="reply-to" content="info@@gling.be">
+
+
+
+         @header.dependencies_header()
+
+            <!-- common angularsj elements -->
+         @header.header()
+
+
+
+    </head>
+    <body ng-app="app" ng-controller="MainCtrl">
+
+        <!-- content -->
+        <div ng-view></div>
+
+    </body>
+</html>

@@ -1,0 +1,9 @@
+.modal-header
+    button.gling-button-dark.glyphicon.glyphicon-remove(style='float:right', ng-click='close()')
+    h4.modal-title {{'--.forgotPassword.title' | translateText}}
+.modal-body
+    p {{'--.forgotPassword.desc' | translateText}}
+    dir-field-text(ng-info='fields.email')
+.modal-footer
+    button.btn.gling-button-dark(ng-disabled='loading', type='button', ng-click='save()') {{'--.generic.submit' | translateText}}
+    img(src='/assets/images/modal-loading.gif', ng-show='loading')

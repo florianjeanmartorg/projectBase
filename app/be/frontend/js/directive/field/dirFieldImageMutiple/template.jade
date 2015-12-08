@@ -1,0 +1,21 @@
+.input-text.field_text.row.field-image-multiple(ng-class="{'error' : displayError()===true,'has-calculator': getInfo().hasCalculator===true}", ng-hide='isActive() === false')
+    .modal-description(ng-show='getInfo().help!=null') {{getInfo().help | translateText}}
+    .form-group
+        label.control-label.col-md-3(ng-show='getInfo().fieldTitle')
+            | {{getInfo().fieldTitle |translateText}}
+        div(ng-class="getInfo().fullSize==true?'col-md-12':'col-md-6'")
+            div(ng-class="{'input-group':!!getInfo().money}")
+                .image-block-container(ng-repeat='imageContainer in images')
+                    .image-block
+                        .image-percentage(ng-show='imageContainer.percent>0 && imageContainer.percent < 100')
+                            | {{imageContainer.percent}} %
+                        .image-percentage-background(ng-show='imageContainer.percent>0 && imageContainer.percent < 100', style='width: {{imageContainer.percent}}%')
+                        .image-container(ng-hide='imageContainer.percent>0 && imageContainer.percent < 100')
+                            img(ng-src='{{imageContainer.image| image}}')
+                        .image-remove.glyphicon.glyphicon-remove(ng-click='remove(imageContainer)')
+                    | {{'--.generic.comment' | translateText}}
+                    textarea(ng-model='imageContainer.image.comment')
+                .add-image-button.image-block(ng-hide='getInfo().maxImage!=null && images.length>=getInfo().maxImage')
+                    input(name='{{ id }}', type='file', ng-file-select='onFileSelect($files)')
+        .col-md-3.errors(ng-show='displayError()===true')
+            | {{getInfo().validationMessage | translateText}}

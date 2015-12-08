@@ -1,0 +1,36 @@
+//- title
+.modal-header
+    button.button-gling-dark.glyphicon.glyphicon-remove(style='float:right', ng-click='close()')
+    h4.modal-title {{'--.loginModal.title' | translateText}}
+
+//- body
+.modal-body.modal-login
+
+    //- help message - displayed if the request come from specific action
+    .help-div(ng-show='helpMessage!=null')
+        i.gling-icon.gling-icon-info
+        | {{helpMessage | translateText}}
+
+    //- login form
+    login-form-ctrl(ng-info='loginFormParam')
+
+    table.login-action
+        tr
+            td
+                i.glyphicon.glyphicon-question-sign
+                |  {{'--.login.form.button.forgotPassword' | translateText}}
+            td
+                a.link(ng-click='toForgotPassword()') {{'--.login.form.button.forgotPassword.action' | translateText}}
+        tr
+            td
+                i.glyphicon.glyphicon-question-sign
+                | {{'--.loginModal.notRegisterYet' | translateText}}
+            td
+                span.modal-login-link.link(ng-click='toRegistration()')
+                    | {{'--.loginModal.toRegistration' | translateText}}
+
+//- footer
+.modal-footer
+    button#login-modal-btn-save.btn.gling-button-dark(ng-disabled='loginFormParam.loading', type='button', ng-click='save()')
+        | {{'--.generic.login.btn' | translateText}}
+    img(src='/assets/images/modal-loading.gif', ng-show='loginFormParam.loading')

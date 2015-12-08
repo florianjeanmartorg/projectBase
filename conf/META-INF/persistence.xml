@@ -1,0 +1,33 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+             version="2.0">
+
+    <!--<?xml version="1.0" encoding="UTF-8"?>-->
+    <!--<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence"-->
+                 <!--xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+                 <!--xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">-->
+
+    <persistence-unit name="defaultPersistenceUnit" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <non-jta-data-source>DefaultDS</non-jta-data-source>
+        <properties>
+            <property name="hibernate.show_sql" value="false"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL9Dialect"/>
+            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5433/project"/>
+            <property name="javax.persistence.jdbc.user" value="play"/>
+            <property name="javax.persistence.jdbc.password" value="play"/>
+
+            <property name="hibernate.cache.use_second_level_cache" value="true" />
+            <property name="hibernate.cache.use_query_cache" value="true" />
+            <property name="hibernate.cache.region.factory_class" value="org.hibernate.cache.ehcache.EhCacheRegionFactory" />
+            <!--<property name="hibernate.cache.infinispan.cachemanager" value="java:/myrmex2/cache" />-->
+            <!--<property name="hibernate.transaction.factory_class" value="org.hibernate.transaction.CMTTransactionFactory"/>-->
+            <!--<property name="hibernate.transaction.manager_lookup_class" value="org.hibernate.transaction.JBossTransactionManagerLookup"/>-->
+        </properties>
+    </persistence-unit>
+
+</persistence>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://dozer.sourceforge.net http://dozer.sourceforge.net/schema/beanmapping.xsd">
+
+    <configuration>
+
+        <custom-converters>
+            <converter type="be.lynk.server.dozerConverter.LangConverter">
+                <class-a>play.i18n.Lang</class-a>
+                <class-b>be.lynk.server.dto.LangDTO</class-b>
+            </converter>
+
+            <converter type="be.lynk.server.dozerConverter.DateConverter">
+                <class-a>java.util.Date</class-a>
+                <class-b>java.time.LocalDateTime</class-b>
+            </converter>
+
+            <converter type="be.lynk.server.dozerConverter.TranslationConverter">
+                <class-a>be.lynk.server.model.entities.Translation</class-a>
+                <class-b>java.lang.String</class-b>
+            </converter>
+
+        </custom-converters>
+
+    </configuration>
+
+
+    <!-- FacebookTokenAccessControlDTO -> FacebookCredential -->
+    <mapping>
+        <class-a>be.lynk.server.dto.externalDTO.FacebookTokenAccessControlDTO</class-a>
+        <class-b>be.lynk.server.model.entities.FacebookCredential</class-b>
+        <field>
+            <a>id</a>
+            <b>userId</b>
+        </field>
+        <field>
+            <a>first_name</a>
+            <b>firstname</b>
+        </field>
+        <field>
+            <a>last_name</a>
+            <b>lastname</b>
+        </field>
+    </mapping>
+
+
+</mappings>

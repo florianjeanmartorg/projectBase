@@ -1,0 +1,11 @@
+.modal-header
+    button.gling-button-dark.glyphicon.glyphicon-remove(style='float:right', ng-click='close()')
+    h4.modal-title {{'--.changePasswordModal.title' | translateText}}
+.modal-body.form
+    dir-field-text(ng-info='fields.oldPassword')
+    dir-field-text(ng-info='fields.newPassword')
+    dir-field-text(ng-info='fields.repeatPassword')
+.modal-footer
+    button#change-password-btn-save.btn.gling-button-dark(ng-disabled='loading', type='button', ng-click='save()')
+        | {{'--.generic.save' | translateText}}
+    img(src='/assets/images/modal-loading.gif', ng-show='loading')

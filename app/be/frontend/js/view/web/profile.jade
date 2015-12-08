@@ -1,0 +1,30 @@
+.container-content
+    .profile-page
+        // data panel
+        .panel.panel-gling.main-panel.panel-personal-information
+            .panel-heading {{'--.customer.profile.personalInformation' | translateText}}
+            .panel-body
+                account-form-ctrl(ng-info='accountParam')
+                button#profile-personal-btn-edit.btn.gling-button-dark(ng-show='accountParam.disabled', ng-click='personalEdit()')
+                    | {{'--.generic.edit' |translateText}}
+                button#profile-personal-btn-save.btn.gling-button-dark(ng-hide='accountParam.disabled', ng-click='personalSave()')
+                    | {{'--.generic.save' | translateText}}
+                button#profile-personal-btn-cancel.btn.gling-button-dark(ng-hide='accountParam.disabled', ng-click='personalCancel()')
+                    | {{'--.generic.cancel' | translateText}}
+                // edit password
+                button#profile-personal-btn-edit-password.btn.gling-button-dark(type='button', ng-show='model.myself.loginAccount===true', ng-click='editPassword()')
+                    | {{'--.changePasswordModal.title' | translateText}}
+                // associate social network to account
+                table.profile-table
+                    tr
+                        th(colspan='2') {{'--.profile.socialNetworkList' |translateText}}
+                    tr
+                        td
+                            img(src='assets/images/facebook/login_icon.png')
+                        td
+                            .link(ng-click='fb_login();', ng-hide='model.myself.facebookAccount===true')
+                                | {{'--.profile.facebook.btn' |translateText}}
+                            div(ng-show='model.myself.facebookAccount===true')
+                                | {{'--.profile.socialNetworkList.facebook' |translateText}} {{model.myself.facebookCredential.firstname}}
+                                | {{model.myself.facebookCredential.lastname}}
+

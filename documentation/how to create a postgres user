@@ -1,0 +1,13 @@
+# connect to postgres
+sudo -i -u postgres
+psql
+
+#create user
+CREATE USER florian SUPERUSER CREATEDB CREATEROLE  PASSWORD 'florian';
+
+# create DB
+CREATE DATABASE test OWNER florian;
+
+# knows the port
+netstat -na | grep postgres
+

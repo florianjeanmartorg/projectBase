@@ -1,0 +1,13 @@
+.input-text.field_text.row(ng-class="{'error' : displayError()===true,'has-calculator': getInfo().hasCalculator===true}", ng-hide='isActive() === false')
+    .form-group
+        label.control-label.col-md-3(ng-show='getInfo().fieldTitle') {{getInfo().fieldTitle | translateText}}
+        .col-md-6
+            div
+                textarea.form-control(
+                name='{{getInfo().name}}',
+                ng-disabled='getInfo().disabled()',
+                ng-model='getInfo().field[getInfo().fieldName]',
+                ng-class="{input_number: getInfo().numbersOnly === 'integer' || getInfo().numbersOnly === 'double','money':!!getInfo().money}", placeholder='{{getInfo().placeholder}}')
+        .col-md-3.errors(ng-show='displayError()===true') {{getInfo().validationMessage | translateText}}
+    .col-md-3.hidden-sm.hidden-xs
+    .col-md-6.help(ng-show='getInfo().details!=null') {{getInfo().details | translateText}}

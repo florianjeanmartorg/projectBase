@@ -1,0 +1,11 @@
+Play Framework
+- orm : eBeans (=> hibernate ?)
+- email :
+
+DB
+- postgres
+COM
+- restfull (esayrest)
+
+FRONT-END
+- angularjs

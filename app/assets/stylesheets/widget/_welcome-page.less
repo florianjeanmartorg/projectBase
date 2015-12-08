@@ -1,0 +1,328 @@
+.welcome-page {
+
+    width: 1000px;
+    margin: 89px auto 50px;
+    position: relative;
+
+    .welcome-header {
+
+        border: 1px solid @color-grey;
+        height: 320px;
+        background: url('/assets/images/welcome_page/bg.jpg') no-repeat scroll 0 -50px;
+        text-align: center;
+        margin-bottom: 20px;
+        background-position-y: -70px;
+
+        .logo {
+            padding-top: 20px;
+            font-size: 150px;
+            color: @color-green-light;
+        }
+        p {
+            font-size: 60px;
+            font-weight: bold;
+            margin-top: 15px;
+            text-shadow: 2px 2px black;
+            color: white;
+        }
+    }
+
+    .left-column {
+        display: inline-block;
+        vertical-align: top;
+        width: 600px;
+
+        .publication-block {
+            margin-top: 10px;
+            background-color: @color-white;
+            padding: 5px;
+        }
+    }
+
+    .center {
+        text-align: center;
+    }
+
+    .right-column {
+        display: inline-block;
+        vertical-align: top;
+        width: 380px;
+        margin-left: 15px;
+    }
+
+    .facebook-block {
+        background-color: #ffffff;
+        margin-left: 10px;
+        margin-bottom: 10px;
+        padding: 5px 0 0;
+    }
+    .block-title {
+        padding-left: 10px;
+        font-size: 26px;
+        margin-bottom: 10px;
+        color: @color-blue-dark;
+        margin-top: 40px;;
+        border-bottom: 1px solid #aaa;
+
+        &.block-title-left {
+            margin-left: 30px;
+            margin-right: 25px;
+        }
+        &.block-title-first {
+            margin-top: 10px !important;
+        }
+    }
+    .flex-direction-nav a {
+        height: 50px !important;
+    }
+
+    .see-more {
+        float: right;
+        margin-top: 10px;
+        /* margin-right: 10px; */
+        font-size: 16px;
+    }
+
+    .map-container {
+        width: 380px;
+        height: 380px;
+        position: relative;
+
+        .flex-direction-nav {
+            top: 50%;
+            position: absolute;
+            left: 0;
+            right: 0;
+            a:before {
+                color: @color-green-light;
+            }
+        }
+
+        li {
+            position: relative;
+            .map-slider {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background-color: rgba(0, 0, 0, 0.3);
+
+                & > div {
+                    position: absolute;
+                    padding: 15px;
+                    left: 0;
+                    right: 0;
+                    background-color: rgba(44, 38, 92, 0.7);
+                    color: @color-green-light;
+                    font-size: 24px;
+                    font-weight: bold;
+                    text-align: center;
+                    line-height: 100%;
+                    top: ~'calc(50% - 25px)';
+                }
+            }
+        }
+    }
+
+    .event-block {
+
+        padding: 5px 15px 15px;
+        position: relative;
+        background-color: #ffffff;
+        margin: 0 25px;
+        color: @color-black;
+        -webkit-box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.4);
+        -moz-box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.4);
+        box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.4);
+
+        .event-title {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #2c265c;
+            margin-top: 10px;
+        }
+
+        img {
+            width: 150px;
+            border-radius: 20px;
+            border: 1px solid @color-grey;
+            margin-right: 10px;
+            float: left;
+        }
+        & > .event_el {
+            display: inline-block;
+            vertical-align: top;
+            &:last-child {
+                margin-left: 20px;
+                width: 400px;
+            }
+        }
+
+        //        &::after {
+        //            content: "";
+        //            background-image: url("/assets/images/welcome/chrismas.jpg");
+        //            opacity: 0.3;
+        //            top: 0;
+        //            left: 0;
+        //            bottom: 0;
+        //            right: 0;
+        //            position: absolute;
+        //            z-index: -1;
+        //        }
+
+        h2 {
+            font-weight: bold;
+            font-size: 30px;
+        }
+
+        .welcome-publication-list {
+            .welcome-publication-box {
+                background-position: 50% 50%;
+                margin: 0 4px;
+                display: inline-block;
+                padding: 10px;
+                background-color: #ffffff;
+                width: 180px;
+                height: 180px;
+                vertical-align: bottom;
+                position: relative;
+                cursor: pointer;
+                border: 1px solid @color-grey;
+
+                &.picture-vertical {
+                    background-size: 100% auto;
+                }
+
+                &.picture-horizontal {
+                    background-size: auto 100%;
+                }
+                &:hover .title {
+                    display: block;
+                }
+
+                img {
+                    width: 60px;
+                    height: 60px;
+                }
+
+                .title {
+                    font-size: 18px;
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    background-color: rgba(0, 0, 0, 0.5);
+                    color: @color-white;
+                    padding: 5px;
+                    display: none;
+
+                    span {
+                        color: @color-green-dark;
+                    }
+                }
+
+                .promotion {
+                    display: inline-block;
+                    background-color: @color-red;
+                    color: @color-white;
+                    font-weight: bold;
+                    font-size: 18px;
+                    position: absolute;
+                    padding: 5px;
+                    top: -10px;
+                    left: -5px;
+                }
+            }
+        }
+    }
+
+    .presentation-block {
+        display: inline-block;
+        vertical-align: top;
+        width: 570px;
+        padding: 20px 50px;
+        margin: 10px 10px;
+        background-color: #ffffff;
+    }
+
+    .map-img {
+        cursor: pointer;
+    }
+
+    .last-business-block {
+        display: inline-block;
+        vertical-align: top;
+        width: 380px;
+        padding: 10px;
+        margin: 0px 0px 10px 10px;
+        background-color: #ffffff;
+    }
+
+    .welcome-business-list {
+        .welcome-business-list-el {
+            padding: 5px;
+            box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+            //                background-color: @color-white;
+            background-color: #ffffff;
+            margin: 6px 0px;
+            .illustration {
+                width: 60px;
+                height: 60px;
+                border: 1px solid @color-grey;
+                cursor: pointer;
+            }
+            .title {
+                font-weight: bold;
+                vertical-align: top;
+                color: @color-blue-dark;
+                display: inline-block;
+                font-size: 18px;
+                cursor: pointer;
+            }
+
+            .address {
+                display: inline-block;
+                font-size: 14px;
+                color: @color-grey;
+            }
+
+            table {
+                tr:first-child {
+                    td:first-child {
+                        width: 65px;
+                    }
+                }
+            }
+            .welcome-business-action {
+                border-top: 1px solid #cccccc;
+                margin-top: 5px;
+                padding-top: 4px;
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+        }
+    }
+
+    .publication-interest-list {
+        text-align: left;
+        height: 72px;
+        .interest-box {
+            float: right;
+            display: inline-block;
+            .home-interest {
+                display: inline-block;
+            }
+            .welcome-progress-bar {
+                width: 100%;
+                height: 8px;
+                border: 1px solid @color-grey;
+                .welcome-progress-bar-content {
+                    height: 100%;
+                    background-color: @color-green-light;
+                }
+            }
+        }
+    }
+
+}

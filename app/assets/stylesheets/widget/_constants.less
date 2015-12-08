@@ -1,0 +1,387 @@
+//33CC99
+//28FDA7
+
+//gling official color
+@color-green-dark: #00B49B;
+@color-green-light: #1AD2AA;
+@color-blue-dark: #2c265c;
+@color-blue-middle: #413c9a;
+@color-blue-light: #aad4f2;
+@color-red: #cc0033;
+@color-yellow: #ff9900;
+@color-grey: #ccc;
+@color-grey-dark: #999;
+@color-white: #f4f4f4;
+@color-help: @color-yellow;
+@color-black: #555555;
+
+
+
+// main
+@color-body-bg: #eee;
+@color-body-text: @color-black;
+@color-body-content-bg: @color-white;
+
+
+.modal-body {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.generic-center {
+    text-align: center;
+}
+
+.generic-bold {
+    font-weight: bold;
+}
+
+.generic-inline-block {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.generic-pointer {
+    cursor: pointer;
+}
+
+.generic-block {
+    display: block !important;
+}
+
+.button-with-label-top,
+.button-with-label {
+    position: relative;
+    &:enabled:hover {
+        p {
+            display: block;
+        }
+    }
+    p {
+        position: absolute;
+        background-color: @color-grey-dark;
+        color: @color-white;
+        display: none;
+        padding: 4px 6px;
+        font-size: 16px;
+        bottom: -34px;
+        left: -50%;
+        opacity: 100;
+        width: auto;
+        white-space: nowrap;
+        overflow: hidden;
+        z-index: 10;
+        border-radius: 6px;
+    }
+}
+
+.button-with-label-top {
+    p {
+        top: -34px;
+        bottom: inherit;
+    }
+}
+
+.facebookCount {
+    display: none !important;
+}
+
+.gling-button {
+    border: 0; //1px solid white;
+    outline: none;
+    background-color: @color-green-light;
+    color: @color-white;
+    margin: 0 5px;
+    border-radius: 20px;
+    padding: 5px 10px;
+    font-size: 16px;
+    font-weight: bold;
+    min-height: 40px;
+    &:hover:enabled {
+        background-color: @color-green-dark;
+        color: @color-white;
+        text-decoration: none;
+    }
+    &:disabled {
+        color: rgba(255, 255, 255, 0.65);
+    }
+
+    &.selected {
+        background-color: @color-blue-dark;
+        &:hover:enabled {
+            background-color: @color-blue-dark;
+        }
+    }
+}
+
+
+
+.gling-button-dark {
+
+    background: @color-blue-dark; /* Old browsers */
+    background: -moz-linear-gradient(top, @color-blue-middle 0%, @color-blue-dark 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, @color-blue-middle 0%, @color-blue-dark 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, @color-blue-middle 0%, @color-blue-dark 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='@color-blue-middle', endColorstr='@color-blue-dark',GradientType=0 ); /* IE6-9 */
+
+//    border: 1px solid @color-blue-light;
+    border: 0; //1px solid white;
+    outline: none;
+    color: @color-white;
+    border-radius: 5px;
+    padding: 4px 10px;
+    margin: 2px;
+    font-size: 16px;
+
+
+
+
+    //&.selected {
+    //    background-color: @color-blue-dark;
+    //    outline: none;
+    //    &:hover:enabled {
+    //        background-color: @color-blue-dark;
+    //    }
+    //}
+
+    &.selected,
+    &:active:enabled{
+        background: @color-green-dark; /* Old browsers */
+        background: -moz-linear-gradient(top, @color-green-light 0%, @color-green-dark 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(top, @color-green-light 0%, @color-green-dark 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom, @color-green-light 0%, @color-green-dark 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='@color-green-light', endColorstr='@color-green-dark',GradientType=0 ); /* IE6-9 */
+    }
+    &:hover:enabled{
+        
+        background: @color-blue-dark; /* Old browsers */
+        background: -moz-linear-gradient(top, #4742BE 0%, @color-blue-middle 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(top, #4742BE 0%, @color-blue-middle 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom, #4742BE 0%, @color-blue-middle 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4742BE', endColorstr='@color-blue-middle',GradientType=0 ); /* IE6-9 */
+        
+        color: @color-white;
+        text-decoration: none;
+        outline: none;
+    }
+    &:focus:enabled{
+        background-color: @color-blue-dark;
+        color: @color-white;
+        text-decoration: none;
+        outline: none;
+    }
+    &:disabled {
+        color: rgba(255, 255, 255, 0.65);
+    }
+    &.gling-button-dark-little{
+        font-size: 14px;
+        padding: 3px 10px;
+        font-weight: bold;
+        margin: 0;
+    }
+}
+
+
+
+.facebookShare{
+    height: auto;
+    .facebookButton{
+        width: auto;
+        font-size: 12px;
+        .pluginButton {
+            padding: 3px 3px;
+            height: auto;
+        }
+    }
+}
+
+.facebook-button{
+    background: #4c69ba;
+    background: -moz-linear-gradient(top, #4c69ba 0%, #3b55a0 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #4c69ba), color-stop(100%, #3b55a0));
+    background: -webkit-linear-gradient(top, #4c69ba 0%, #3b55a0 100%);
+    background: -o-linear-gradient(top, #4c69ba 0%, #3b55a0 100%);
+    background: -ms-linear-gradient(top, #4c69ba 0%, #3b55a0 100%);
+    background: linear-gradient(to bottom, #4c69ba 0%, #3b55a0 100%);
+    color: #ffffff;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.btn,
+.dropdown-menu,
+.form-control {
+    font-size: 16px;
+}
+
+.btn-gling {
+    background-image: -webkit-linear-gradient(top,@color-blue-light 0,@color-blue-dark 20%,@color-blue-dark 80%,@color-blue-light 100%);
+    background-image: -o-linear-gradient(top,@color-blue-light 0,@color-blue-dark 20%,@color-blue-dark 80%,@color-blue-light 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(@color-blue-light), to(@color-blue-dark));
+    background-image: linear-gradient(to bottom,@color-blue-light 0,@color-blue-dark 20%,@color-blue-dark 80%,@color-blue-light 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff428bca', endColorstr='#ff2d6ca2', GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+    color: #ffffff;
+    border-color: #9ecaee;
+}
+
+.gling-button-light {
+    background-color: @color-white;
+    color: @color-blue-dark;
+    margin-right: 10px;
+    border: 2px solid @color-green-light;
+    border-radius: 20px;
+    padding: 5px 10px;
+    font-size: 16px;
+    -moz-appearance: none;
+    outline: none;
+    cursor: pointer;
+    min-height: 40px;
+}
+
+.btn,
+.dropdown-menu,
+.form-control {
+    font-size: 16px;
+}
+
+.panel-gling {
+    overflow: hidden;
+    border: 2px solid @color-blue-dark;
+    border-radius: 20px;
+    .panel-heading {
+        font-size: 20px;
+        color: @color-blue-dark;
+        font-weight: bold;
+        border-bottom: 1px solid @color-grey;
+    }
+}
+
+.help-big {
+    font-weight: bold;
+    text-align: center;
+    margin: 8px;
+    font-size: 18px;
+}
+
+.help-popup {
+    position: absolute;
+    width: 300px;
+    background-color: @color-help;
+    z-index: 1;
+    font-size: 16px;
+    padding: 10px;
+    border: 1px solid @color-black;
+    margin: 5px;
+    .help-popup-close {
+        border: none;
+        outline: none;
+        background: none;
+        font-size: 12px;
+        border-radius: 20px;
+        width: 22px;
+        height: 22px;
+        float: right;
+        &:hover,
+        &:focus {
+            background-color: @color-black;
+            color: @color-help;
+        }
+    }
+}
+
+.help-div {
+
+    font-size: 18px;
+    background-color: #1ad2aa;
+    color: @color-white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin: 5px;
+    i{
+        font-size: 30px;
+    }
+
+    .help-popup-close {
+        border: none;
+        outline: none;
+        background: none;
+        font-size: 12px;
+        border-radius: 20px;
+        width: 22px;
+        height: 22px;
+        float: right;
+        &:hover,
+        &:focus {
+            background-color: @color-black;
+            color: @color-help;
+        }
+    }
+}
+
+
+.help-div-geolocalisation {
+    background-color: @color-help;
+    font-size: 16px;
+    padding: 10px;
+    border: 1px solid @color-black;
+    margin: 5px;
+
+    .help-popup-close {
+        border: none;
+        outline: none;
+        background: none;
+        font-size: 12px;
+        border-radius: 20px;
+        width: 22px;
+        height: 22px;
+        float: right;
+        &:hover,
+        &:focus {
+            background-color: @color-black;
+            color: @color-help;
+        }
+    }
+}
+
+.horizontal-split {
+
+    width: 100%;
+    table-layout: fixed;
+
+    tr {
+
+        td:first-child,
+        td:last-child {
+            width: 2em;
+        }
+        td:nth-child(2) {
+            width: 1em;
+            text-align: center;
+        }
+
+        div {
+            width: 100%; //~'calc(50% - 30px)';
+            height: 1px;
+            background: @color-grey-dark;
+            vertical-align: middle;
+        }
+    }
+}
+
+.modal-description {
+    background-color: #efefef;
+    margin: 5px;
+    padding: 3px 25px;
+    width: 90%;
+}
+
+.link {
+    text-decoration: underline;
+    color: #1b0ddd;
+    cursor: pointer;
+}
+
+.link:hover {
+    color: #1a0dab;
+}

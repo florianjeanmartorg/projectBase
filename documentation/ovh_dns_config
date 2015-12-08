@@ -1,0 +1,7 @@
+1) ovh : add DNS zone
+Ex : www.gling.be | CNAME | gling.herokuapp.com.
+2) add redirection
+Ex : gling.be | visible permanent | www.gling.be
+3) add domain to heroku app
+Ex : heroku domains:add www.gling.eu --a gling
+4)

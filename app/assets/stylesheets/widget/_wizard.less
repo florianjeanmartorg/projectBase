@@ -1,0 +1,67 @@
+.wizard {
+    width: 100%;
+    & > div {
+        height: 40px;
+        padding: 10px;
+        margin-right: 5px;
+        background: @color-grey;
+        position: relative;
+        display: inline-block;
+        &:nth-child(n + 2):before {
+            width: 0px;
+            height: 0px;
+            border-top: 20px inset transparent;
+            border-bottom: 20px inset transparent;
+            border-left: 20px solid @color-white;
+            position: absolute;
+            content: "";
+            top: 0;
+            left: 0;
+        }
+        &:after {
+            width: 0px;
+            height: 0px;
+            border-top: 20px inset transparent;
+            border-bottom: 20px inset transparent;
+            border-left: 20px solid @color-grey;
+            position: absolute;
+            content: "";
+            top: 0;
+            right: -20px;
+            z-index: 2;
+        }
+        &:first-child {
+            -moz-border-radius: 4px 0 0 4px;
+            -webkit-border-radius: 4px 0 0 4px;
+            border-radius: 4px 0 0 4px;
+            .wizard-badge {
+                margin-left: 0;
+            }
+            a:before {
+                border: none;
+            }
+        }
+        &:last-child {
+            -moz-border-radius: 0 4px 4px 0;
+            -webkit-border-radius: 0 4px 4px 0;
+            border-radius: 0 4px 4px 0;
+            &:after {
+                border: none;
+            }
+        }
+
+    }
+    .wizard-badge {
+        margin: 0 5px 0 18px;
+        position: relative;
+        top: -1px;
+    }
+    .current {
+        background: @color-blue-dark;
+        color: @color-white;
+        font-weight: bold;
+        &:after {
+            border-left-color: @color-blue-dark;
+        }
+    }
+}

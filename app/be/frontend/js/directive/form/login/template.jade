@@ -1,0 +1,28 @@
+.form.login-form
+
+    //- login facebook button
+    .facebook-login-btn-container
+        a.facebookShare.ng-isolate-scope(ng-click="fb_login()")
+            .facebookButton
+                .pluginButton
+                    .pluginButtonContainer
+                        .pluginButtonImage
+                            button(type="button")
+                                i.pluginButtonIcon.img.sp_plugin-button-2x.sx_plugin-button-2x_favblue
+                        span.pluginButtonLabel {{'--.loginModal.facebook.btn' |translateText}}
+
+    // 'or'
+    table.horizontal-split
+        tr
+            td
+                div
+            td {{'--.generic.or' | translateText}}
+            td
+                div
+
+    //- login form
+    dir-field-text(ng-info='fields.email')
+    dir-field-text(ng-info='fields.password')
+
+    //- accept condition sentence
+    div.condition(ng-bind-html="'--.registration.accept.condition' | translateText | text")

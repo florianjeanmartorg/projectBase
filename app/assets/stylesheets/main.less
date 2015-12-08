@@ -1,0 +1,219 @@
+@import 'widget/_constants';
+@import 'widget/_form';
+@import 'widget/_content';
+@import 'widget/_cr-messenger';
+@import 'widget/_field_date';
+@import 'widget/_field_text';
+@import 'widget/_modal-login';
+@import 'widget/_wizard';
+@import 'widget/_field_image_multiple';
+@import 'widget/_facebook-login';
+@import 'widget/_messenger';
+@import 'widget/_progress_bar';
+@import 'widget/_welcome-page';
+
+.header-locaton-icon{
+
+}
+
+h1 {
+    margin: 0;
+}
+
+html, body {
+    overflow: auto;
+}
+
+body {
+    color: @color-body-text;
+    background-color: @color-body-bg;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.container-content {
+    width: 1000px;
+    margin: 94px auto auto;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.header-with-advanced-search {
+    height: 165px !important;
+    .header-option-container {
+        position: fixed;
+        top: 100px;
+    }
+}
+
+.modal-lg {
+    width: 898px !important;
+}
+.modal-body{
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+input {
+    &.money {
+        text-align: right;
+    }
+}
+
+h3 {
+    border-bottom: 1px solid rgb(204, 204, 204);
+    margin-top: 5px;
+    padding-bottom: 5px;
+    font-size: 22px;
+    padding-left: 15px;
+}
+
+input[type=checkbox].big_ck {
+    border: 1px solid #ccc;
+    height: 32px;
+    width: 32px;
+    border-radius: 4px;
+    color: #555;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+}
+
+input[type=checkbox].middle_ck {
+    border: 1px solid #ccc;
+    height: 22px;
+    width: 22px;
+    border-radius: 4px;
+    color: #555;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+}
+
+@media (max-width: 480px) {
+    .col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6,
+    .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    .row {
+        margin-left: -5px;
+        margin-right: -5px;
+    }
+
+    .content-block {
+        margin-left: 5px;
+        margin-right: 5px;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    .container {
+        padding: 0;
+    }
+
+    .modal-body {
+        padding: 5px;
+    }
+}
+
+button {
+    &.btn {
+        margin-bottom: 5px;
+    }
+}
+
+.value {
+    font-weight: 600;
+    text-align: right;
+
+    &.red {
+        color: #cc0000;
+    }
+    &.green {
+        color: #00cc00;
+    }
+}
+
+.biggest {
+    width: 100%;
+}
+
+.bordered {
+    border: 1px solid #999999;
+    margin: 10px;
+    padding: 5px;
+}
+
+.mask {
+    display: none;
+}
+
+.modal-body {
+    padding-top: 5px;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+a {
+    cursor: pointer;
+}
+
+.loading {
+    text-align: center;
+    padding-top: 50px;
+}
+
+.menu-connection-button-container {
+    position: relative;
+    display: inline;
+
+    .menu-connection-name {
+        max-width: 200px;
+        display: inline-block;
+        color: white;
+        font-size: 30px;
+        margin-right: 20px;
+    }
+    .menu-connection-icon {
+        font-size: 20px;
+        display: inline-block;
+        cursor: pointer;
+        & > span {
+            display: inline-block;
+            border-top: 4px solid;
+            border-right: 4px solid transparent;
+            border-left: 4px solid transparent;
+            margin-left: 2px;
+            margin-top: 15px;
+            vertical-align: top;
+        }
+    }
+
+    & > ul {
+        min-width: 200px;
+        top: 23px !important;
+    }
+}
+
+
+iframe{
+    width: 100%;
+    height: 700px;
+}
