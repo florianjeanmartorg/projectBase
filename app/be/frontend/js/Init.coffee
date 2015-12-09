@@ -6,9 +6,7 @@ myApp = angular.module('app', [
     'angularFileUpload'
     'ngRoute'
     'ngTable'
-    'geolocation'
     'timer'
-    'angular-flexslider'
 ])
 app.config [
     '$locationProvider'
