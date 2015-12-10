@@ -47,48 +47,39 @@ public class LoginRestController extends AbstractRestController {
     private FacebookCredentialService facebookCredentialService;
     @Autowired
     private LoginCredentialService    loginCredentialService;
-    @Autowired
-    private StoredFileService         storedFileService;
-    @Autowired
-    private FacebookRequest           facebookRequest;
 
 
-    /* ////////////////////////////////////////////////////
-     * CREATE FUNCTION
-     /////////////////////////////////////////////////// */
+    /* --------------------------------------
+        CREATE FUNCTION
+     --------------------------------------- */
 
     /**
      * login with facebook
-     * if the accessToken come from a user already registered into Gling, loggin him
-     * if not, create a new customer account
-     * fail if the email of the user cannot be catch from facebook
-     * Send an email if an account is created
+     * The facebookToken / userId are send to Facebook to be authenticated
+     * if the accessToken come from a user already registered, logging him
+     * if not, create a new customer account and send an email
+     * if not and the user is currently logged, fusion the facebook account and the currently logged user
      *
+     * @secutiry none
      * @param facebookToken the facebook token of the user
-     * @param userId        the userId => TODO not use currently
+     * @param userId        the userId
      * @return MyselfDTO
+     * @commonException if the Facebook account have no email / the email is owned by an other account
      */
     @Transactional
     public Result loginFacebook(String facebookToken, String userId) {
 
         initialization();
 
-        Account account = loginToFacebook(facebookToken, userId);
+        //authentication by Facebook
+        FacebookTokenAccessControlDTO facebookTokenAccessControlDTO = facebookCredentialService.controlFacebookAccess(facebookToken,userId);
 
-        return ok(finalizeConnection(account));
-    }
-
-    public Account loginToFacebook(String facebookToken, String userId) {
-
-        //authentication
-        FacebookTokenAccessControlDTO facebookTokenAccessControlDTO = facebookCredentialService.controlFacebookAccess(facebookToken);
-
-        //control
+        //test if the user already exists
         FacebookCredential facebookCredential = facebookCredentialService.findByUserId(facebookTokenAccessControlDTO.getId());
-        Account account;
-
+        Account            account;
 
         if (facebookCredential != null) {
+            //the user already exists : connect him
             account = facebookCredential.getAccount();
         } else {
 
@@ -107,7 +98,6 @@ public class LoginRestController extends AbstractRestController {
                 accountService.saveOrUpdate(account);
 
             } else {
-
 
                 //test email : if the email is null, impossible to create an account
                 if (facebookTokenAccessControlDTO.getEmail() == null) {
@@ -160,20 +150,23 @@ public class LoginRestController extends AbstractRestController {
             }
 
         }
-        return account;
+        return ok(finalizeConnection(account));
     }
 
     /**
-     * Register a new account with data contain into the RegistrationDTO
+     * Register a new account
+     * Create a account, session, store the account into the session and send an email
      *
-     * @return Return an exception if the email is already used
-     * Create a account, session, store the account into the session and return a LoginSuccess if already is ok
+     * @secutiry none
+     * @dto post.AccountRegistrationDTO
+     * @return MyselfDTO
+     * @commonException the email is owned by an other account
      */
     @Transactional
     public Result registration() {
 
         AccountRegistrationDTO accountDTO = initialization(AccountRegistrationDTO.class);
-        Account account = createNewAccount(accountDTO);
+        Account                account    = createNewAccount(accountDTO);
 
 
         //send email
@@ -190,11 +183,12 @@ public class LoginRestController extends AbstractRestController {
      /////////////////////////////////////////////////// */
 
     /**
-     * generate a new email and send a mail with this new password
-     * fail if the email is not knows or this user doesn't use credential for loggin
-     * Expect : ForgotPasswordDTO
+     * generate a new password and send a mail with it
      *
-     * @return nothing
+     * @dto post.ForgotPasswordDTO
+     * @secutiry none
+     * @return none
+     * @commonException  the email is not owned by an account / this account doesn't use a loginCredential
      */
     @Transactional
     public Result forgotPassword() {
@@ -221,12 +215,12 @@ public class LoginRestController extends AbstractRestController {
     }
 
     /**
-     * try to connect the user to an account with the password / email
-     * expected the LoginDTO as Json data
-     * Return an exception is the email / password doesn't correspond of any account
+     * Try to log the user to an account with the password / email
      *
-     * @return a Login is the credential are valid and store the account into the context.
-     * Create also a session
+     * @secutiry none
+     * @dto post.LoginDTO
+     * @return MyselfDTO
+     * @commonException the couple login - password doesn't match
      */
     @Transactional
     public Result login() {
@@ -248,8 +242,10 @@ public class LoginRestController extends AbstractRestController {
     }
 
     /**
-     * remove the account of the context
+     * log out the user
      *
+     * @secutiry none
+     * @dto none
      * @return a redirection to the home page
      */
     @Transactional
@@ -261,14 +257,15 @@ public class LoginRestController extends AbstractRestController {
     /**
      * change the language of the server. If the user if logged, change also his language
      *
-     * @param code
-     * @return
+     * @param code : the code of the lang ('en','fr',...)
+     * @secutiry none
+     * @dto none
+     * @return none
      */
     @Transactional
     public Result changeLanguage(String code) {
 
         initialization();
-
 
         Lang lang = Lang.forCode(code);
         if (lang != null) {
@@ -286,44 +283,17 @@ public class LoginRestController extends AbstractRestController {
         return ok(new ResultDTO());
     }
 
-    @Transactional
-    @SecurityAnnotation(role = RoleEnum.USER)
-    public Result linkFacebook(String facebookToken, String user_id) {
-
-        //authentication
-        FacebookTokenAccessControlDTO facebookTokenAccessControlDTO = facebookCredentialService.controlFacebookAccess(facebookToken);
-
-        //control
-        FacebookCredential facebookCredential = facebookCredentialService.findByUserId(facebookTokenAccessControlDTO.getId());
-
-        if (facebookCredential != null) {
-            throw new MyRuntimeException(ErrorMessageEnum.ERROR_LOGIN_FACEBOOK_LINK_ALREADY_USED);
-        }
-
-        //link
-        if (securityController.getCurrentUser().getFacebookCredential() != null) {
-            throw new MyRuntimeException(ErrorMessageEnum.ERROR_LOGIN_FACEBOOK_LINK_ALREADY_LINKED);
-        }
-
-        Account currentUser = securityController.getCurrentUser();
-        facebookCredential = dozerService.map(facebookTokenAccessControlDTO, FacebookCredential.class);
-        facebookCredential.setAccount(currentUser);
-        currentUser.setFacebookCredential(facebookCredential);
-
-        accountService.saveOrUpdate(currentUser);
-
-        return ok(finalizeConnection(currentUser));
-    }
-
     /* ////////////////////////////////////////////////////
      * READ FUNCTION
      /////////////////////////////////////////////////// */
 
     /**
-     * Return a boolean : true if the email is already used, else false
+     * Test if a email address is already owned by an account
      *
-     * @param email
-     * @return
+     * @param email : the email address to test
+     * @secutiry none
+     * @dto none
+     * @return true if the email is already owned, false if not
      */
     @Transactional
     public Result testEmail(String email) {
@@ -334,7 +304,6 @@ public class LoginRestController extends AbstractRestController {
     /* ////////////////////////////////////////////////////
      * PRIVATE FUNCTION
      /////////////////////////////////////////////////// */
-
 
 
     private DTO finalizeConnection(Account account) {

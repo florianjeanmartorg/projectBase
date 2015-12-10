@@ -67,11 +67,11 @@ myApp.service 'facebookService', ($http, accountService, $locale, languageServic
             if callbackError?
                 callbackError data, status
 
-    @linkToAccount = (accessToken, callbackSuccess, callbackError) ->
-        linkFct = (accessTokenToLink) ->
+    @linkToAccount = (callbackSuccess, callbackError) ->
+        linkFct = (accessTokenToLink,facebookId) ->
             $http(
                 'method': 'GET'
-                'url': '/rest/facebook/link/' + accessTokenToLink + '/null'
+                'url': '/rest/login/facebook/' + accessTokenToLink + '/'+facebookId
                 'headers': 'Content-Type:application/json;charset=utf-8')
             .success (data) ->
                 if data? != ''
@@ -82,31 +82,23 @@ myApp.service 'facebookService', ($http, accountService, $locale, languageServic
                 if callbackError?
                     callbackError data, status
 
-        if accessToken?
-            authResponse =
-                accessToken:accessToken
-            isConnected = true
-
-            #connection
-            linkFct authResponse.accessToken
+        #is facebook is connected, call the server with authResponse
+        if isConnected
+            linkFct authResponse.accessToken,authResponse.userID
         else
-            #is facebook is connected, call the server with authResponse
-            if isConnected
-                linkFct authResponse.accessToken
-            else
-                # else, log to facebook
-                FB.login (response) ->
-                    if response.status == 'connected'
+            # else, log to facebook
+            FB.login (response) ->
+                if response.status == 'connected'
 
-                        #... and log to server
-                        authResponse = response.authResponse
-                        isConnected = true
-                        #... and log
-                        linkFct authResponse.accessToken
-                    else
-                        if callbackError?
-                            callbackError()
-                , {scope: @facebookAuthorization}
+                    #... and log to server
+                    authResponse = response.authResponse
+                    isConnected = true
+                    #... and log
+                    linkFct authResponse.accessToken,authResponse.userID
+                else
+                    if callbackError?
+                        callbackError()
+            , {scope: @facebookAuthorization}
 
 
     #

@@ -18,11 +18,11 @@ public class AccountRegistrationDTO extends DTO  {
     private GenderEnum gender;
 
     @NotNull
-    @Pattern(regexp = ".{2,50}", message = "--.validation.dto.size")
+    @Pattern(regexp = "^.{2,50}$", message = "--.validation.dto.size")
     private String firstname;
 
     @NotNull
-    @Pattern(regexp = ".{2,50}", message = "--.validation.dto.size")
+    @Pattern(regexp = "^.{2,50}$", message = "--.validation.dto.size")
     private String lastname;
 
     @NotNull
@@ -30,7 +30,7 @@ public class AccountRegistrationDTO extends DTO  {
     private String email;
 
     @NotNull
-    @Pattern(regexp = "[a-zA-Z0-9-_]{6,18}", message = "--.validation.dto.password")
+    @Pattern(regexp = "^[a-zA-Z0-9-_]{6,18}$", message = "--.validation.dto.password")
     private String password;
 
     private LangDTO lang;

@@ -42,8 +42,6 @@ describe('Customer test', function () {
 
         browser.get(target);
 
-        //control page name
-        expect(browser.getTitle()).toEqual('Gling');
 
         // ********************
         // Registration
@@ -61,12 +59,10 @@ describe('Customer test', function () {
         writeField('repeatPassword',customerPassword);
 
         //skip address and interest
-        element(by.id('customer-registration-modal-btn-next')).click();
-        element(by.id('customer-registration-modal-btn-skip')).click();
-        element(by.id('customer-registration-modal-btn-skip')).click();
+        element(by.id('registration-modal-btn-save')).click();
 
         //control connection
-        expect(element(by.id('dropdownMenu1')).getText()).toEqual(customerFirstName + " " + customerLastName);
+        expect(element(by.css('.menu-connection-name')).getText()).toEqual(customerFirstName);
         element(by.css('.messenger-close')).click();
 
         //logout
@@ -84,8 +80,10 @@ describe('Customer test', function () {
         element(by.id('login-modal-btn-save')).click();
         element(by.css('.messenger-close')).click();
 
+        //browser.pause();
+
         //control connection
-        expect(element(by.id('dropdownMenu1')).getText()).toEqual(customerFirstName + " " + customerLastName);
+        expect(element(by.css('.menu-connection-name')).getText()).toEqual(customerFirstName);
 
         // ********************
         // Edit profile
@@ -95,39 +93,7 @@ describe('Customer test', function () {
         element(by.id('dropdownMenu1')).click();
         element(by.id('welcome-btn-profile')).click();
 
-        // Edit Address
-        // ********************
 
-        //open add address modal
-        element(by.id('profile-btn-address-add')).click();
-        element(by.cssContainingText('option', customerAddressName)).click();
-        writeField('street',customerAddressStreet);
-        writeField('zip',customerAddressZip);
-        writeField('city',customerAddressCity);
-
-        //save
-        element(by.id('profile-btn-save')).click();
-
-        //control
-        element(by.css('.pull-right')).click();
-        expect(element(by.css('.address-box > div:nth-child(1) > span:nth-child(2)')).getText()).toEqual(customerAddressStreet);
-        expect(element(by.css('.address-box > div:nth-child(2) > span:nth-child(2)')).getText()).toEqual(customerAddressZip);
-        expect(element(by.css('.address-box > div:nth-child(3) > span:nth-child(2)')).getText()).toEqual(customerAddressCity);
-        expect(element(by.css('.address-box > div:nth-child(4) > span:nth-child(2)')).getText()).toEqual(customerAddressCountry);
-
-        element(by.css('.address-container .glyphicon-edit')).click();
-        writeField('street',customerAddress2Street);
-        writeField('zip',customerAddress2Zip);
-        writeField('city',customerAddress2City);
-
-        //save
-        element(by.id('profile-btn-save')).click();
-
-        //control
-        element(by.css('.pull-right')).click();
-        expect(element(by.css('.address-box > div:nth-child(1) > span:nth-child(2)')).getText()).toEqual(customerAddress2Street);
-        expect(element(by.css('.address-box > div:nth-child(2) > span:nth-child(2)')).getText()).toEqual(customerAddress2Zip);
-        expect(element(by.css('.address-box > div:nth-child(3) > span:nth-child(2)')).getText()).toEqual(customerAddress2City);
 
         // Edit personal data
         // ********************
@@ -185,26 +151,9 @@ describe('Customer test', function () {
         element(by.id('dropdownMenu1')).click();
         element(by.id('welcome-btn-profile')).click();
 
-        // Edit interest
-        // ********************
-        //open window
-        element(by.id('profile-interest-btn-edit')).click();
-
-        //edit
-        element(by.css('.customer_interest_form_container .customer_interest_form:nth-child(2) .interest')).click();
-        var interest1 =  element(by.css('.customer_interest_form_container .customer_interest_form:nth-child(2) .interest')).getText();
-        element(by.css('.customer_interest_form_container .customer_interest_form:nth-child(10) .interest')).click();
-        var interest2 =  element(by.css('.customer_interest_form_container .customer_interest_form:nth-child(10) .interest')).getText();
-        element(by.id('edit-customer-interest-btn-save')).click();
-
-        //control
-        expect(element(by.css('.category-list .category-box:nth-child(1)')).getText()).toEqual(interest1);
-        expect(element(by.css('.category-list .category-box:nth-child(2)')).getText()).toEqual(interest2);
-
         // Test welcome
         // ********************
-        //go to welcome
-        element(by.id('welcome-btn-welcome')).click();
+
 
     });
 });

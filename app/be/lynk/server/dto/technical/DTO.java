@@ -38,6 +38,7 @@ public class DTO implements Content{
     @Enumerated(value = EnumType.STRING)
     private SourceEnum device;
 
+    @JsonIgnoreProperties
     protected Long currentAccountId;
 
 

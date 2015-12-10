@@ -1,4 +1,4 @@
-.input-text.field_text.row(ng-class="{'error' : displayError()===true,'has-calculator': getInfo().hasCalculator===true}", ng-hide='isActive() === false')
+.input-text.field_text.row(ng-class="{'error' : displayError()===true}", ng-hide='isActive() === false')
     .form-group
         label.control-label.col-md-3(ng-show='getInfo().fieldTitle') {{getInfo().fieldTitle | translateText}}
         .col-md-6

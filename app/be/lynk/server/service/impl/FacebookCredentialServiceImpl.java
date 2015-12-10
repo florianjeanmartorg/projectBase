@@ -46,13 +46,4 @@ public class FacebookCredentialServiceImpl extends CrudServiceImpl<FacebookCrede
         return facebookTokenAccessControlDTO;
     }
 
-    @Override
-    public FacebookTokenAccessControlDTO controlFacebookAccess(String accessToken) {
-
-        FacebookTokenAccessControlDTO facebookTokenAccessControlDTO = facebookRequest.meRequest(accessToken);
-
-
-        return facebookTokenAccessControlDTO;
-    }
-
 }

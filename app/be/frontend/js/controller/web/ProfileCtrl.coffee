@@ -36,7 +36,7 @@ myApp.controller 'ProfileCtrl', ($scope, modalService, accountService, $rootScop
     #link to facebook
     $scope.fb_login = ->
         $scope.loading = true
-        facebookService.linkToAccount null,(data) ->
+        facebookService.linkToAccount (data) ->
             $scope.facebookSuccess data
             $scope.loading = false
         , (data) ->

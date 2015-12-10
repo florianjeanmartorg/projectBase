@@ -18,19 +18,28 @@ import play.mvc.Result;
 
 /**
  * Created by florian on 26/03/15.
+ * Used to recover myself / edit my account
  */
 @org.springframework.stereotype.Controller
 public class
-        AccountRestController extends AbstractRestController {
+MyselfRestController extends AbstractRestController {
 
     //service
     @Autowired
-    private AccountService          accountService;
+    private AccountService accountService;
     @Autowired
-    private LoginCredentialService  loginCredentialService;
-    @Autowired
-    private SessionService          sessionService;
+    private LoginCredentialService loginCredentialService;
 
+    /* --------------------------------------
+        READ FUNCTION
+     --------------------------------------- */
+
+    /**
+     * Get the myself object
+     *
+     * @return MyselfDTO
+     * @secutiry USER
+     */
     @Transactional
     @SecurityAnnotation(role = RoleEnum.USER)
     public Result myself() {
@@ -40,17 +49,24 @@ public class
         return ok(myselfDTO);
     }
 
+    /* --------------------------------------
+        UPDATE FUNCTION
+     --------------------------------------- */
 
+    /**
+     * Edit the account of the connected user
+     * Field editable : firstname,lastname,gender,email,lang
+     * If the lang is changed, the language of the server session is changed
+     *
+     * @return MyselfDTO
+     * @secutiry USER
+     * @dto AccountDTO
+     */
     @Transactional
     @SecurityAnnotation(role = RoleEnum.USER)
-    public Result editAccount(long id) {
+    public Result edit() {
 
         AccountDTO dto = initialization(AccountDTO.class);
-
-        //contorl it's myself'
-        if (!securityController.getCurrentUser().getId().equals(id)) {
-            throw new MyRuntimeException(ErrorMessageEnum.WRONG_AUTHORIZATION, id);
-        }
 
         Account account = securityController.getCurrentUser();
 
@@ -77,14 +93,18 @@ public class
         return ok(accountToMyself(account));
     }
 
+    /**
+     * Change the password of the current connected user
+     * Control the old password before accept the new one
+     *
+     * @return MyselfDTO
+     * @secutiry USER
+     * @dto ChangePasswordDTO
+     * @commonException if the old password doesn't watch
+     */
     @Transactional
     @SecurityAnnotation(role = RoleEnum.USER)
-    public Result changePassword(long id) {
-
-        //contorl it's myself'
-        if (!securityController.getCurrentUser().getId().equals(id)) {
-            throw new MyRuntimeException(ErrorMessageEnum.WRONG_AUTHORIZATION, id);
-        }
+    public Result changePassword() {
 
         ChangePasswordDTO changePasswordDTO = initialization(ChangePasswordDTO.class);
 
@@ -100,6 +120,6 @@ public class
         //operation
         accountService.saveOrUpdate(account);
 
-        return ok(dozerService.map(account, AccountDTO.class));
+        return ok(accountToMyself(account));
     }
 }

@@ -13,24 +13,20 @@ GET         /assets/*file                                      controllers.Asset
 ## tested by LoginRestControllerTest
 POST        /rest/login                                        @be.lynk.server.controller.rest.LoginRestController.login()
 GET         /rest/login/facebook/:access_token/:user_id        @be.lynk.server.controller.rest.LoginRestController.loginFacebook(access_token:String,user_id:String)
-GET         /rest/facebook/link/:access_token/:user_id         @be.lynk.server.controller.rest.LoginRestController.linkFacebook(access_token:String,user_id:String)
 GET         /rest/logout                                       @be.lynk.server.controller.rest.LoginRestController.logout()
 GET         /rest/email/test/:email                            @be.lynk.server.controller.rest.LoginRestController.testEmail(email:String)
 PUT         /rest/language/:code                               @be.lynk.server.controller.rest.LoginRestController.changeLanguage(code:String)
 PUT         /rest/forgot/password                              @be.lynk.server.controller.rest.LoginRestController.forgotPassword()
 POST        /rest/registration                                 @be.lynk.server.controller.rest.LoginRestController.registration()
-##account
-GET         /rest/myself                                       @be.lynk.server.controller.rest.AccountRestController.myself()
-PUT         /rest/account/$id<[0-9]+>                          @be.lynk.server.controller.rest.AccountRestController.editAccount(id:Long)
-PUT         /rest/account/password/$id<[0-9]+>                 @be.lynk.server.controller.rest.AccountRestController.changePassword(id:Long)
+##myself
+GET         /rest/myself                                       @be.lynk.server.controller.rest.MyselfRestController.myself()
+PUT         /rest/myself                                       @be.lynk.server.controller.rest.MyselfRestController.edit()
+PUT         /rest/myself/password                              @be.lynk.server.controller.rest.MyselfRestController.changePassword()
 
 #file
-POST        /rest/file/:sizex/:sizey                           @be.lynk.server.controller.rest.FilesController.uploadWithSize(sizex:Integer,sizey:Integer)
-GET         /rest/file/:storedFileId                           @be.lynk.server.controller.rest.FilesController.download(storedFileId: Long)
-POST        /rest/file                                         @be.lynk.server.controller.rest.FilesController.upload()
-
-#contact
-POST        /rest/contact                                      @be.lynk.server.controller.rest.ContactRestController.contact()
+#POST        /rest/file/:sizex/:sizey                           @be.lynk.server.controller.rest.FilesController.uploadWithSize(sizex:Integer,sizey:Integer)
+#GET         /rest/file/:storedFileId                           @be.lynk.server.controller.rest.FilesController.download(storedFileId: Long)
+#POST        /rest/file                                         @be.lynk.server.controller.rest.FilesController.upload()
 
 
 #############

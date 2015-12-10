@@ -50,11 +50,6 @@ myApp.directive 'dirFieldText', (directiveService, $timeout, modalService) ->
             scope.displayError = ->
                 return scope.getInfo().isValid == false and scope.getInfo().firstAttempt == false
 
-            #open calculator
-            scope.openCalculator = ->
-                modalService.openCalculatorModal new (result) ->
-                    scope.getInfo().field[scope.getInfo().fieldName] = result
-
             #initialize
             if scope.getInfo().autoCompleteValue?
                 scope.getInfo().autoCompleteValue = []

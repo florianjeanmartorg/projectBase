@@ -66,7 +66,7 @@ myApp.service 'accountService', ($flash, $http) ->
             newPassword: newPassword
         $http
             'method': 'PUT'
-            'url': '/rest/account/password/' + self.getMyself().id
+            'url': '/rest/myself/password'
             'headers': 'Content-Type:application/json;charset=utf-8'
             'data': dto
         .success (data, status) ->
@@ -80,7 +80,7 @@ myApp.service 'accountService', ($flash, $http) ->
     @editAccount = (dto, callbackSuccess, callbackError) ->
         $http
             'method': 'PUT'
-            'url': '/rest/account/' + self.getMyself().id
+            'url': '/rest/myself'
             'headers': 'Content-Type:application/json;charset=utf-8'
             'data': dto
         .success (data) ->
@@ -126,11 +126,5 @@ myApp.service 'accountService', ($flash, $http) ->
 
     @setMyself = (dto) ->
         @model.myself = dto
-
-    @getMyBusiness = ->
-        @model.myBusiness
-
-    @setMyBusiness = (dto) ->
-        @model.myBusiness = dto
 
     return
